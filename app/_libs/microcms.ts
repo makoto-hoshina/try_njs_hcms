@@ -24,26 +24,26 @@ export type News = {
   category: Category;
 } & MicroCMSListContent;
 
-console.log(process.env.MICROCMS_API_KEY);
-console.log(process.env.MICROCMS_SERVICE_DOMAIN);
+// console.log(process.env.MICROCMS_API_KEY);
+// console.log(process.env.MICROCMS_SERVICE_DOMAIN);
 
-// if (!process.env.MICROCMS_SERVICE_DOMAIN) {
-//   throw new Error("MICROCMS_SERVICE_DOMAIN is required");
-// }
+if (!process.env.MICROCMS_SERVICE_DOMAIN) {
+  throw new Error("MICROCMS_SERVICE_DOMAIN is required");
+}
 
-// if (!process.env.MICROCMS_API_KEY) {
-//   throw new Error("MICROCMS_API_KEY is required");
-// }
-
-// const client = createClient({
-//   serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
-//   apiKey: process.env.MICROCMS_API_KEY,
-// });
+if (!process.env.MICROCMS_API_KEY) {
+  throw new Error("MICROCMS_API_KEY is required");
+}
 
 const client = createClient({
-  serviceDomain: "chipmunktry",
-  apiKey: "g8xYSVp2GrjEAIklaQvZaAmohDtgQFM5itSX",
+  serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
+  apiKey: process.env.MICROCMS_API_KEY,
 });
+
+// const client = createClient({
+//   serviceDomain: "chipmunktry",
+//   apiKey: "g8xYSVp2GrjEAIklaQvZaAmohDtgQFM5itSX",
+// });
 
 export const getMembersList = async (queries?: MicroCMSQueries) => {
   const listData = await client.getList<Member>({
