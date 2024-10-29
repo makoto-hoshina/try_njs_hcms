@@ -24,6 +24,9 @@ export type News = {
   category: Category;
 } & MicroCMSListContent;
 
+console.log(process.env.MICROCMS_API_KEY);
+console.log(process.env.MICROCMS_SERVICE_DOMAIN);
+
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
   throw new Error("MICROCMS_SERVICE_DOMAIN is required");
 }
